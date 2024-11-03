@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Overview</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1E2A38, #3E4A59);
+      color: #ECEFF1;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    h2 {
+      font-size: 1.8em;
+      color: #E1F5FE;
+      margin-top: 0;
+    }
+    p {
+      font-size: 1.1em;
+      color: #CFD8DC;
+      line-height: 1.6;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    ul li::before {
+      content: "• ";
+      color: #80D8FF;
+      font-weight: bold;
+      margin-right: 5px;
+    }
+    li {
+      font-size: 1.1em;
+      color: #CFD8DC;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    strong {
+      color: #80D8FF;
+    }
+    code {
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 1em;
+      color: #B2EBF2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Project Overview</h2>
+    <p>We have created a steampunk-themed library website hosted on AWS, with content served via CloudFront. This project involves:</p>
+    <ul>
+      <li><strong>An S3 bucket</strong> to store static assets, such as <code>index.html</code> and images.</li>
+      <li><strong>A CloudFront distribution</strong> to serve the content with low latency and HTTPS.</li>
+    </ul>
+
+    <h2>Why Terraform?</h2>
+    <p>Terraform is an Infrastructure as Code (IaC) tool that allows us to define and deploy cloud infrastructure in a repeatable and automated way. Here’s how it benefits our project:</p>
+    <ul>
+      <li><strong>Automation and Reproducibility</strong>: With Terraform, we can set up and configure AWS resources like S3 buckets, CloudFront distributions, and bucket policies with code. This makes it easy to redeploy or modify infrastructure, ideal for the fast pace of a hackathon.</li>
+      <li><strong>Version Control and Collaboration</strong>: Since infrastructure is defined in code, we can track changes, collaborate, and roll back if needed.</li>
+      <li><strong>Scalability</strong>: Using Terraform means we can easily expand this infrastructure, such as adding more S3 buckets or caching rules, as the project grows.</li>
+    </ul>
+
+    <h2>What We Used Terraform For in This Project</h2>
+    <p>Here are the specific resources we provisioned with Terraform:</p>
+    <ul>
+      <li><strong>S3 Bucket</strong>: To store the static files (HTML, images) for the website, with public access set through a bucket policy.</li>
+      <li><strong>CloudFront Distribution</strong>: To serve content globally, providing faster access with caching and HTTPS.</li>
+      <li><strong>Bucket Policies and Permissions</strong>: Managed with Terraform to ensure that objects in the bucket are publicly accessible.</li>
+      <li><strong>Infrastructure Management</strong>: By running simple Terraform commands, we can create, modify, or tear down the entire setup as needed.</li>
+    </ul>
+
+    <h2>How Terraform Improved Efficiency</h2>
+    <ul>
+      <li><strong>Quick Setup</strong>: We could quickly create all required resources in one go without manually configuring each one.</li>
+      <li><strong>Consistency</strong>: Terraform ensured consistent infrastructure setup every time we applied changes, avoiding manual errors.</li>
+      <li><strong>Easy Changes</strong>: During the hackathon, if we needed to adjust a setting (like changing a bucket policy or cache behavior), we could update the Terraform configuration and reapply.</li>
+    </ul>
+
+    <h2>How It Works Together</h2>
+    <p>This is how Terraform, S3, and CloudFront integrate in our project:</p>
+    <ul>
+      <li><strong>Terraform provisions and configures</strong> both S3 and CloudFront.</li>
+      <li>The <strong>S3 bucket hosts static files</strong>, while CloudFront caches and distributes them globally.</li>
+      <li>The combination allows us to deliver a website with <strong>low latency, security, and scalability</strong>.</li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victorian Clock with Pendulum</title>
+    <style>
+        /* Basic page styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('chd.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: "Times New Roman", serif;
+            color: #f5e6c9;
+        }
+        /* Main clock stand */
+        .clock-stand {
+            position: relative;
+            width: 200px;
+            height: 500px;
+            background: #3a3a3a;
+            border: 8px solid #8b5a2b;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        /* Victorian Ornamentation */
+        .ornament {
+            width: 150px;
+            height: 10px;
+            background: linear-gradient(90deg, #d2a679, #8b5a2b, #d2a679);
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+
+        /* Clock container */
+        .clock-face {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin-top: 15px;
+            border: 8px solid #8b5a2b;
+            border-radius: 50%;
+            background: #3a3a3a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Clock hands */
+        .hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            background: #d2a679;
+            transform-origin: bottom;
+        }
+        .hour {
+            width: 8px;
+            height: 30px;
+            transform: rotate(0deg);
+        }
+        .minute {
+            width: 6px;
+            height: 45px;
+            transform: rotate(0deg);
+        }
+        .second {
+            width: 4px;
+            height: 55px;
+            background: #f96e46;
+            transform: rotate(0deg);
+        }
+
+        /* Center dot */
+        .center-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #f5e6c9;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Pendulum holder including bell */
+        .pendulum {
+            position: relative;
+            width: 4px;
+            height: 100px; /* Adjust height as needed */
+            background: #8b5a2b;
+            top: 20px;
+            animation: swing 2s ease-in-out infinite;
+            transform-origin: top center;
+        }
+
+        /* Bell connected to the pendulum holder */
+        .bell {
+            width: 50px;
+            height: 50px;
+            background: #d2a679;
+            border-radius: 50%;
+            position: absolute;
+            top: 100px; /* Adjusted position */
+            left: 50%;
+            transform: translateX(-50%);
+            transform-origin: top center;
+        }
+
+        /* Clock Stand Base */
+        .clock-base {
+            position: absolute;
+            bottom: 0;
+            width: 140px;
+            height: 20px;
+            background: #8b5a2b;
+            border-radius: 8px;
+            box-shadow: inset 0 -5px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Animation for swinging pendulum */
+        @keyframes swing {
+            0% { transform: rotate(-20deg); }
+            50% { transform: rotate(20deg); }
+            100% { transform: rotate(-20deg); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="clock-stand">
+    <!-- Victorian Ornamentation -->
+    <div class="ornament"></div>
+
+    <!-- Clock Face -->
+    <div class="clock-face">
+        <!-- Clock Hands -->
+        <div class="hand hour" id="hour"></div>
+        <div class="hand minute" id="minute"></div>
+        <div class="hand second" id="second"></div>
+        <div class="center-dot"></div>
+    </div>
+
+    <!-- Pendulum with Bell -->
+    <div class="pendulum">
+        <div class="bell"></div>
+    </div>
+
+    <!-- Another Ornament -->
+    <div class="ornament"></div>
+
+    <!-- Clock Base -->
+    <div class="clock-base"></div>
+</div>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const hours = now.getHours() % 12;
+        const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
+
+        // Calculate rotations
+        const hourRotation = (hours * 30) + (minutes * 0.5); // 30 degrees per hour, 0.5 per minute
+        const minuteRotation = (minutes * 6); // 6 degrees per minute
+        const secondRotation = (seconds * 6); // 6 degrees per second
+
+        // Rotate clock hands
+        document.getElementById("hour").style.transform = `rotate(${hourRotation}deg)`;
+        document.getElementById("minute").style.transform = `rotate(${minuteRotation}deg)`;
+        document.getElementById("second").style.transform = `rotate(${secondRotation}deg)`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call to set the time right away
+</script>
+
+</body>
+</html>

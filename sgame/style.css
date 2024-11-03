@@ -1,0 +1,77 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #87ceeb;
+    font-family: Arial, sans-serif;
+    background-image: url('assests/background.png'); /* Add your background image */
+    background-size: contain; /* Ensure the background covers the entire container */
+    background-position: center; /* Center the background image */
+
+    
+}
+
+#gameContainer {
+    position: relative;
+    width: 1000px;
+    height: 700px;
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    overflow: hidden;
+    background-image: url('assests/socean.jpg'); /* Add your background image */
+    background-size: cover; /* Ensure the background covers the entire container */
+    background-position: center; /* Center the background image */
+    
+}
+
+#ship {
+    position: absolute;
+    bottom: 20px;
+    left: 275px;
+    width: 100px;
+    height: 75px;
+    background-color: #8b4513;
+    background-image: url('assests/ship.png'); /* Use a ship image if available */
+    background-size: cover;
+    border-radius: 30%;
+}
+
+.shark {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    background-color: #ff6347;
+    border-radius: 50%;
+    background-image: url('assests/shark.png'); /* Use a shark image if available */
+    background-size: cover;
+}
+
+.bullet {
+    position: absolute;
+    width: 8px;
+    height: 15px;
+    background-color: #ffffff;
+}
+
+#scoreBoard, #timer {
+    position: absolute;
+    top: 10px;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+#scoreBoard {
+    left: 10px;
+}
+
+#timer {
+    right: 10px;
+}
